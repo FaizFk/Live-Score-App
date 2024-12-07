@@ -53,7 +53,7 @@ class GamesAdminProvider extends ChangeNotifier {
     if (message == '') return;
     try {
       final myDoc = _dbAnnouncements.doc();
-      final currentAdmin = await AuthProvider.currentUser;
+      final currentAdmin = await AuthorizationProvider.currentUser;
       Announcement announcement = Announcement(
         message: message,
         createdOn: DateTime.now().toString(),
@@ -77,7 +77,7 @@ class GamesAdminProvider extends ChangeNotifier {
   Future<List<Game>> get getAdminGames async {
     List<Game> gamesAdminList = [];
     try {
-      final currentUser = await AuthProvider.currentUser;
+      final currentUser = await AuthorizationProvider.currentUser;
       final snapshots = await _dbOngoingGamesRT
           .orderByChild('creator')
           .equalTo(currentUser?.email)
@@ -99,7 +99,7 @@ class GamesAdminProvider extends ChangeNotifier {
   Future<void> addGame(
       String team1, String team2, String description, String gameType) async {
     try {
-      final currentUser = await AuthProvider.currentUser;
+      final currentUser = await AuthorizationProvider.currentUser;
       Game game = Game(
           creator: currentUser!.email,
           creatorName: currentUser.name,

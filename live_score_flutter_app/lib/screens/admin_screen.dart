@@ -38,8 +38,9 @@ class _AdminScreenState extends State<AdminScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FutureBuilder(
-                          future: AuthProvider.currentUser,
+                          future: AuthorizationProvider.currentUser,
                           builder: (context, snapshot) {
+                            print(snapshot.data);
                             if (snapshot.hasData) {
                               return Text.rich(
                                 TextSpan(
@@ -59,7 +60,7 @@ class _AdminScreenState extends State<AdminScreen> {
                       TextButton(
                           onPressed: () async {
                             try {
-                              await AuthProvider.logout();
+                              await AuthorizationProvider.logout();
                               Navigator.pushNamedAndRemoveUntil(
                                 context,
                                 OngoingGamesScreen.id,
@@ -104,8 +105,9 @@ class _AdminScreenState extends State<AdminScreen> {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasData) {
-                      List<Game> gamesList=snapshot.data??[];
-                      gamesList.sort((a,b) => -1*a.createdOn.compareTo(b.createdOn));
+                      List<Game> gamesList = snapshot.data ?? [];
+                      gamesList.sort(
+                          (a, b) => -1 * a.createdOn.compareTo(b.createdOn));
                       return Expanded(
                         child: ListView.builder(
                           itemCount: gamesList.length,
@@ -120,9 +122,10 @@ class _AdminScreenState extends State<AdminScreen> {
                                 'game': gamesList[index]
                               };
                               Navigator.pushNamed(context, EditGameScreen.id,
-                                  arguments: args).then((value){setState(() {
-                                    
-                                  });});
+                                      arguments: args)
+                                  .then((value) {
+                                setState(() {});
+                              });
                             },
                           ),
                         ),

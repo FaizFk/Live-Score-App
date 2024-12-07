@@ -76,9 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               builder: (context) => const Center(
                                     child: CircularProgressIndicator(),
                                   ));
-                          await AuthProvider.logIn(
-                              email: emailTextController.text.toUpperCase(),
-                              password: passwordTextController.text.toUpperCase());
+                          await AuthorizationProvider.logIn(
+                              email: emailTextController.text,
+                              password: passwordTextController.text);
                           Navigator.pop(context);
                           if (auth.currentUser != null) {
                             Navigator.pushNamedAndRemoveUntil(

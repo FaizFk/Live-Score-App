@@ -96,11 +96,11 @@ class _SignupScreenState extends State<SignupScreen> {
                             builder: (context) => const Center(
                                   child: CircularProgressIndicator(),
                                 ));
-                        await AuthProvider.signUp(
-                            email: emailTextController.text.toUpperCase(),
-                            password: passwordTextController.text.toUpperCase(),
-                            name: nameTextController.text.toUpperCase(),
-                            collegeName: collegeNameTextController.text.toUpperCase());
+                        await AuthorizationProvider.signUp(
+                            email: emailTextController.text,
+                            password: passwordTextController.text,
+                            name: nameTextController.text,
+                            collegeName: collegeNameTextController.text);
                         Navigator.pop(context);
                         if (auth.currentUser != null) {
                           Navigator.pushNamedAndRemoveUntil(

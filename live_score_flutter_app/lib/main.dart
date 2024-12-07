@@ -25,12 +25,16 @@ Future<void> backgroundHandler(RemoteMessage message) async {
 }
 
 Future<void> main() async {
+  print("Hello World");
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   LocalNotificationService.initialize();
+
   await dotenv.load();
   runApp(MyApp());
 }
