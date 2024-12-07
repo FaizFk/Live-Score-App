@@ -23,20 +23,11 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -56,7 +47,7 @@ class DefaultFirebaseOptions {
     projectId: 'live-score-flutter',
     authDomain: 'live-score-flutter.firebaseapp.com',
     databaseURL: 'https://live-score-flutter-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'live-score-flutter.appspot.com',
+    storageBucket: 'live-score-flutter.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -65,6 +56,37 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1066179756198',
     projectId: 'live-score-flutter',
     databaseURL: 'https://live-score-flutter-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'live-score-flutter.appspot.com',
+    storageBucket: 'live-score-flutter.firebasestorage.app',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyB68FdImlVEqib-nSei9V_4JCrIIuqIKeA',
+    appId: '1:1066179756198:ios:d87aa0ad38471e00e3b467',
+    messagingSenderId: '1066179756198',
+    projectId: 'live-score-flutter',
+    databaseURL: 'https://live-score-flutter-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'live-score-flutter.firebasestorage.app',
+    iosBundleId: 'com.example.liveScoreFlutterApp',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyB68FdImlVEqib-nSei9V_4JCrIIuqIKeA',
+    appId: '1:1066179756198:ios:d87aa0ad38471e00e3b467',
+    messagingSenderId: '1066179756198',
+    projectId: 'live-score-flutter',
+    databaseURL: 'https://live-score-flutter-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'live-score-flutter.firebasestorage.app',
+    iosBundleId: 'com.example.liveScoreFlutterApp',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCk-r47kJ0cA-NSaOI22WYz8nw1NMJ_a7E',
+    appId: '1:1066179756198:web:01ee2d212632a571e3b467',
+    messagingSenderId: '1066179756198',
+    projectId: 'live-score-flutter',
+    authDomain: 'live-score-flutter.firebaseapp.com',
+    databaseURL: 'https://live-score-flutter-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'live-score-flutter.firebasestorage.app',
+  );
+
 }

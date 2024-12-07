@@ -3,13 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:live_score_flutter_app/models/admin.dart';
 import '../utils.dart';
 
-class AuthProvider {
+class AuthorizationProvider {
   static final auth = FirebaseAuth.instance;
   static final _dbUsers = FirebaseFirestore.instance.collection('users');
 
   static Future<Admin?> get currentUser async {
     try {
       final userSnapshot = await _dbUsers.doc(auth.currentUser?.email).get();
+
       if (userSnapshot.exists) {
         return Admin.fromJson(userSnapshot.data()!);
       }
